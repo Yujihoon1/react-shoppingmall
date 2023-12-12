@@ -34,7 +34,7 @@ ProductCard.propTypes = {
     name: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
   }).isRequired,
-  onPurchase: PropTypes.func.isRequired,
+  onProductDetail: PropTypes.func.isRequired,
 };
 
 export default ProductCard;
