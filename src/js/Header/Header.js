@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../../contexts/AuthContext";
 
 function Header() {
+  const { isLoggedIn } = useContext(AuthContext);
+
   return (
     <header>
       <nav>
@@ -17,7 +20,11 @@ function Header() {
             <Link to="/category">카테고리</Link>
           </li>
           <li>
-            <Link to="/login">로그인/회원가입</Link>
+            {isLoggedIn ? (
+              <Link to="/mypage">마이페이지</Link>
+            ) : (
+              <Link to="/login">로그인/회원가입</Link>
+            )}
           </li>
           <li>
             <Link to="/cart">장바구니</Link>

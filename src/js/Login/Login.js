@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import AuthContext from "../../contexts/AuthContext";
 
 //로그인 페이지
 function Login() {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const { setIsLoggedIn } = useContext(AuthContext); // 로그인 상태 변경 함수
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,6 +23,8 @@ function Login() {
     if (response.ok) {
       //로그인 성공 시
       console.log("로그인 성공");
+      setIsLoggedIn(true);
+      navigate("/");
     } else {
       //로그인 실패 시
       console.log("로그인 실패");
