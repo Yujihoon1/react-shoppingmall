@@ -7,22 +7,24 @@ function ProductCard({ product, onProductDetail }) {
   const navigate = useNavigate();
 
   const handleProductDetail = (product) => {
-    // 구매 로직
     onProductDetail(product);
-    navigate(`/product/${product.id}`);
-    console.log(`구매: ${product.name}`);
+    navigate(`/product/${product.product_num}`);
+    console.log(`구매: ${product.product_name}`);
   };
 
   return (
-    <article id={"product-card-${product.id}"}>
+    <article id={`product-card-${product.product_num}`}>
       <div className="product-img" onClick={() => handleProductDetail(product)}>
-        <img alt={"${product.name} Image"} />
+        <img
+          src={product.product_image}
+          alt={`${product.product_name} Image`}
+        />
       </div>
       <h3 className="product-name" onClick={() => handleProductDetail(product)}>
-        {product.name}
+        {product.product_name}
       </h3>
       <p className="product-price" onClick={() => handleProductDetail(product)}>
-        가격: {product.price}원
+        가격: {product.product_price}원
       </p>
     </article>
   );
@@ -30,9 +32,9 @@ function ProductCard({ product, onProductDetail }) {
 
 ProductCard.propTypes = {
   product: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+    product_num: PropTypes.number.isRequired,
+    product_name: PropTypes.string.isRequired,
+    product_price: PropTypes.number.isRequired,
   }).isRequired,
   onProductDetail: PropTypes.func.isRequired,
 };

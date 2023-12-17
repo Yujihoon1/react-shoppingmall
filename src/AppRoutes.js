@@ -8,6 +8,9 @@ import Category from "./js/Category/Category";
 import Cart from "./js/Cart/Cart";
 import Admin from "./js/Admin/Admin";
 import MyPage from "./js/MyPage/MyPage";
+import Checkout from "./js/Checkout/Checkout";
+import HandlePayment from "./js/Checkout/HandlePayment";
+import Orders from "./js/Orders/Orders";
 
 // 이 프로젝트에서 있는 AppRoute들 path 정리
 const AppRoutes = () => {
@@ -20,6 +23,10 @@ const AppRoutes = () => {
       <Route path="/category" element={<Category />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/mypage" element={<MyPage />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/payments" element={<HandlePayment />} />
+      <Route path="/orders" element={<Orders />} />
       <Route path="/mypage" element={<MyPage />} />
     </Routes>
   );
