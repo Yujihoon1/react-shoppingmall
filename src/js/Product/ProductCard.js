@@ -7,16 +7,16 @@ function ProductCard({ product, onProductDetail }) {
   const navigate = useNavigate();
 
   const handleProductDetail = (product) => {
-    onProductDetail(product);
+    // onProductDetail(product);
     navigate(`/product/${product.product_num}`);
     console.log(`구매: ${product.product_name}`);
   };
 
   return (
-    <article id={`product-card-${product.product_num}`}>
+    <div id={`product-card-${product.product_num}`} className="product-card">
       <div className="product-img" onClick={() => handleProductDetail(product)}>
         <img
-          src={product.product_image}
+          src={`http://localhost:5000/${product.product_image}`}
           alt={`${product.product_name} Image`}
         />
       </div>
@@ -26,7 +26,7 @@ function ProductCard({ product, onProductDetail }) {
       <p className="product-price" onClick={() => handleProductDetail(product)}>
         가격: {product.product_price}원
       </p>
-    </article>
+    </div>
   );
 }
 
@@ -35,6 +35,7 @@ ProductCard.propTypes = {
     product_num: PropTypes.number.isRequired,
     product_name: PropTypes.string.isRequired,
     product_price: PropTypes.number.isRequired,
+    product_content: PropTypes.string.isRequired,
   }).isRequired,
   onProductDetail: PropTypes.func.isRequired,
 };
