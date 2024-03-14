@@ -10,9 +10,11 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <Header />
-        <AppRoutes />
-        <Footer />
+        <div className="container">
+          <Header />
+          <AppRoutes />
+          <Footer />
+        </div>
       </AuthProvider>
     </Router>
   );

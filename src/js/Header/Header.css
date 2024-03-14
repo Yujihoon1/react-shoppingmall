@@ -1,0 +1,35 @@
+div {
+  display: block;
+}
+
+.home {
+  width: 94rem;
+  background-color: #ecebe7;
+  text-align: -webkit-center;
+}
+.home .logo img {
+  display: block;
+  width: 8rem;
+  height: 8rem;
+}
+
+nav {
+  display: flex;
+  width: 94rem;
+  border-bottom: 1px solid;
+}
+ul {
+  display: flex;
+  list-style: none;
+}
+ul li {
+  width: 8rem;
+  text-align: center;
+  padding-right: 3rem;
+}
+ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+/*# sourceMappingURL=Header.css.map */

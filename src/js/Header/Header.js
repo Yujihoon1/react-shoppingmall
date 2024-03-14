@@ -1,17 +1,43 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import AuthContext from "../../contexts/AuthContext";
+import "./Header.css";
+import logo from "./logo.png";
 
 function Header() {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, user } = useContext(AuthContext);
+
+  // 토큰 사용
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     const token = localStorage.getItem("token");
+  //     if (token) {
+  //       axios
+  //         .get("http://localhost:5000/mypage", {
+  //           headers: { Authorization: `Bearer ${token}` },
+  //         })
+  //         .then((response) => {
+  //           console.log(response.data); // 응답 데이터를 콘솔에 출력
+  //         })
+  //         .catch((error) => {
+  //           console.error("Error:", error); // 에러 발생 시 에러 메시지를 콘솔에 출력
+  //         });
+  //     }
+  //   }
+  // }, [isLoggedIn, user]);
 
   return (
     <header>
-      <nav>
+      <div className="home">
         <Link to="/" className="logo">
-          LOGO
+          <img src={logo} alt="Logo" />
         </Link>
-        <input type="text" placeholder="검색" />
+      </div>
+      <nav>
+        <div className="search">
+          <input type="text" placeholder="검색" />
+        </div>
         <ul className="nav-links">
           <li>
             <Link to="/">홈</Link>
@@ -31,6 +57,9 @@ function Header() {
           </li>
           <li>
             <Link to="/admin">관리자 페이지</Link>
+          </li>
+          <li>
+            <Link to="/orders">주문 내역</Link>
           </li>
         </ul>
       </nav>
