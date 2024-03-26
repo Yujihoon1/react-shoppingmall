@@ -1,0 +1,13 @@
+.login {
+  text-align: center;
+  height: 24rem;
+}
+.login form input {
+  font-size: 1.7rem;
+  margin-bottom: 2rem;
+}
+.login button {
+  font-size: 1.7rem;
+}
+
+/*# sourceMappingURL=Login.css.map */

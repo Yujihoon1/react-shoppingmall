@@ -1,0 +1,15 @@
+@import "../varibales";
+
+.login {
+  text-align: center;
+  height: 24rem;
+  form {
+    input {
+      font-size: $size_big;
+      margin-bottom: 2rem;
+    }
+  }
+  button {
+    font-size: $size_big;
+  }
+}

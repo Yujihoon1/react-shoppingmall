@@ -7,6 +7,7 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
+  const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -23,11 +24,11 @@ function Signup() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ user_id: id, password }),
+      body: JSON.stringify({ user_id: id, password, user_name: userName }),
     });
 
     if (response.ok) {
-      setMessage("회원가입이 완료되었습니다.");
+      alert("회원가입이 완료되었습니다.");
       //0.5초 후에 로그인 페이지로 이동하기
       setTimeout(() => {
         navigate("/login");
@@ -48,6 +49,16 @@ function Signup() {
             type="text"
             name="id"
             onChange={(e) => setId(e.target.value)}
+          />
+        </label>
+        <br />
+        <label>
+          사용자 이름: {/* 사용자 이름 입력 필드 추가 */}
+          <br />
+          <input
+            type="text"
+            name="user_name"
+            onChange={(e) => setUserName(e.target.value)}
           />
         </label>
         <br />

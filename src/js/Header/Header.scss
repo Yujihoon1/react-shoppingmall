@@ -1,0 +1,35 @@
+div {
+  display: block;
+}
+.home {
+  width: 94rem;
+  background-color: #ecebe7;
+  text-align: -webkit-center;
+  .logo {
+    img {
+      display: block;
+      width: 8rem;
+      height: 8rem;
+    }
+  }
+}
+nav {
+  display: flex;
+  width: 94rem;
+  border-bottom: 1px solid;
+  .search {
+  }
+}
+ul {
+  display: flex;
+  list-style: none;
+  li {
+    width: 8rem;
+    text-align: center;
+    padding-right: 3rem;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
