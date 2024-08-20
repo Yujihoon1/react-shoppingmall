@@ -1,0 +1,126 @@
+@import "../varibales";
+
+html {
+  width: 100%;
+}
+
+//기본 페이지-MainContent
+.banner {
+  display: flex;
+  justify-content: center;
+  width: 94rem;
+  height: 30rem;
+  margin: 4rem 0;
+  align-items: center;
+
+  img {
+    width: 67rem;
+    height: 30rem;
+    cursor: pointer;
+  }
+  .prev {
+    width: 5rem;
+    height: 3rem;
+    text-align: center;
+    cursor: pointer;
+  }
+  .next {
+    width: 5rem;
+    height: 3rem;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 94rem;
+  margin-bottom: 4rem;
+
+  .product-card {
+    display: grid;
+    width: 15.5rem;
+    height: auto;
+    margin: 0 1.5rem auto;
+    text-align: center;
+
+    .product-img {
+      width: 15.5rem;
+      height: 16rem;
+      margin-bottom: 1rem;
+
+      img {
+        width: 15.5rem;
+        height: 16rem;
+        cursor: pointer;
+      }
+    }
+    .product-name {
+      margin: 0;
+    }
+    .product-price {
+      margin: 0;
+    }
+    .product-form {
+      width: 15.5rem;
+      max-height: 20rem;
+      margin: 0 1.5rem 2rem auto;
+
+      input {
+        width: 3rem;
+      }
+      img {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      button {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+//배너
+.banner_detail {
+  display: flex;
+  flex-direction: column;
+  img {
+    width: 94rem;
+  }
+}
+
+//카테고리
+.category {
+  display: flex;
+  margin-top: 2rem;
+  div {
+    width: 10rem;
+    height: 2rem;
+    border: 1px solid black;
+    margin-right: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    font-size: $size_normal;
+    cursor: pointer;
+  }
+}
+
+// 전체 주문 내역
+.order {
+  min-height: 24rem;
+
+  a {
+    display: flex;
+    text-decoration: none;
+    font-size: $size_normal;
+    place-content: center;
+    div {
+      display: flex;
+      margin-right: 2rem;
+    }
+  }
+}
+footer {
+  border-top: 1px solid black;
+}
