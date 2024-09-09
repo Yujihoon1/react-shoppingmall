@@ -38,12 +38,12 @@ async function saveOrder(orderData) {
   return response.json(); // 저장된 Order의 ID를 반환
 }
 
-function HandlePayment({ isAgreed, myInfo, paymentInfo, product, quantity }) {
+function HandlePayment({ isAgreed, myInfo, paymentInfo, items, totalPrice }) {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const onSubmit = async (event) => {
-    event.preventDefault(); //기본 이벤트 방지
+    event.preventDefault(); // 기본 이벤트 방지
 
     if (!isAgreed) {
       alert("약관에 동의해주세요.");
@@ -68,22 +68,51 @@ function HandlePayment({ isAgreed, myInfo, paymentInfo, product, quantity }) {
       const orderData = {
         user_name: user.user_name,
         user_num: user.user_num,
-        total_price: product.product_price * quantity,
-        orderDetails: [
-          {
-            product_num: product.product_num,
-            quantity: quantity,
-          },
-        ],
+        total_price: totalPrice,
+        orderDetails: items.map((item) => ({
+          product_num: item.product.product_num,
+          quantity: item.quantity,
+        })),
       };
       const orderResult = await saveOrder(orderData);
       if (!orderResult) throw new Error("주문 정보 저장에 실패했습니다.");
 
-      // 모든 정보가 성공적으로 저장되면 주문 목록 페이지로 리디렉션
-      alert("주문에 성공하였습니다.");
+      // 선택된 항목들만 삭제
+      const itemIds = items.map((item) => item.product.product_num);
+      console.log("Deleting items with IDs:", itemIds); // 요청 데이터 확인
+      const deleteResult = await deleteCartItems(user.user_num, itemIds);
+      console.log("Delete result:", deleteResult);
+
+      alert("주문에 성공하였습니다. 장바구니에서 상품이 삭제되었습니다.");
       navigate("/orders");
     } catch (error) {
       alert(error.message);
+    }
+  };
+
+  // 선택된 항목들만 삭제하는 함수
+  const deleteCartItems = async (user_num, itemIds) => {
+    try {
+      const response = await fetch(
+        `http://localhost:5000/cart/${user.user_num}/items`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ itemIds }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("장바구니 항목 삭제에 실패했습니다.");
+      }
+
+      const result = await response.json();
+      return result;
+    } catch (error) {
+      console.error("장바구니 항목 삭제 중 오류 발생:", error);
+      throw error;
     }
   };
 
