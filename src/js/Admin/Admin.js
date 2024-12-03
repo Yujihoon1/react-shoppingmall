@@ -11,6 +11,7 @@ import PromotionManagement from "./PromotionManagement";
 // import Statistics from "./Statistics";
 import PromotionAdd from "../Promotion/PromotionAdd";
 import PromotionEdit from "../Promotion/PromotionEdit";
+import UserManagement from "./UserManagement";
 
 //관리자 페이지
 function Admin() {
@@ -20,6 +21,9 @@ function Admin() {
         <ul>
           <li>
             <Link to="/admin/dashboard">대시보드</Link>
+          </li>
+          <li>
+            <Link to="/admin/users">유저 관리</Link>
           </li>
           <li>
             <Link to="/admin/orders">주문 관리</Link>
@@ -43,6 +47,7 @@ function Admin() {
         <Routes>
           {/* <Route path="/admin/dashboard" element={<Dashboard />} /> */}
           <Route path="orders" element={<OrderManagement />} />
+          <Route path="users" element={<UserManagement />} />
           <Route path="inventory" element={<InventoryManagement />} />
           <Route path="products/add" element={<ProductAdd />} />
           <Route

@@ -6,7 +6,19 @@ import "./Header.css";
 import logo from "./logo.png";
 
 function Header() {
-  const { isLoggedIn, user } = useContext(AuthContext);
+  const { isLoggedIn, user, setIsLoggedIn, setUser } = useContext(AuthContext);
+  console.log("Header user:", user);
+
+  useEffect(() => {
+    console.log("Header user:", user); // user 값 확인
+  }, [user]);
+
+  const handleLogout = () => {
+    setIsLoggedIn(false); // 로그인 상태를 false로 설정
+    setUser(null); // user 정보를 null로 설정
+    localStorage.removeItem("user"); // localStorage에서 user 정보 제거
+    localStorage.removeItem("token"); // localStorage에서 token 제거
+  };
 
   // 토큰 사용
   // useEffect(() => {
@@ -52,12 +64,21 @@ function Header() {
               <Link to="/login">로그인/회원가입</Link>
             )}
           </li>
+          {isLoggedIn && ( // 로그인 상태일 때만 로그아웃 링크 표시
+            <li>
+              <Link to="#" onClick={handleLogout}>
+                로그아웃
+              </Link>
+            </li>
+          )}
           <li>
             <Link to="/cart">장바구니</Link>
           </li>
-          <li>
-            <Link to="/admin">관리자 페이지</Link>
-          </li>
+          {isLoggedIn && user && user.user_grade === "admin" && (
+            <li>
+              <Link to="/admin">관리자 페이지</Link>
+            </li>
+          )}
           <li>
             <Link to="/orders">주문 내역</Link>
           </li>

@@ -34,17 +34,14 @@ function Login() {
 
     const result = await response.json();
     if (response.ok) {
-      //로그인 성공 시
       console.log("로그인 성공");
-      console.log(result);
       setIsLoggedIn(true);
-      setUser(result.user);
-      console.log(result.user);
+      setUser(result.user); // user 정보 설정
+      localStorage.setItem("user", JSON.stringify(result.user)); // localStorage에 저장
       setToken(result.token);
-      localStorage.setItem("token", result.token);
+      localStorage.setItem("token", result.token); // localStorage에 저장
       navigate("/");
     } else {
-      //로그인 실패 시
       console.log("로그인 실패");
     }
   };
