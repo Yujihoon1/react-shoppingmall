@@ -66,7 +66,7 @@ function Header() {
           </li>
           {isLoggedIn && ( // 로그인 상태일 때만 로그아웃 링크 표시
             <li>
-              <Link to="#" onClick={handleLogout}>
+              <Link to="/" onClick={handleLogout}>
                 로그아웃
               </Link>
             </li>
