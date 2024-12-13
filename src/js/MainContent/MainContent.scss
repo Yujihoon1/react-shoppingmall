@@ -1,4 +1,5 @@
 @import "../varibales";
+$product-scale: 1.05;
 
 html {
   width: 100%;
@@ -10,7 +11,7 @@ html {
   justify-content: center;
   width: 94rem;
   height: 30rem;
-  margin: 4rem 0;
+  margin: 2rem 0;
   align-items: center;
 
   img {
@@ -20,13 +21,13 @@ html {
   }
   .prev {
     width: 5rem;
-    height: 3rem;
+    font-size: 5rem;
     text-align: center;
     cursor: pointer;
   }
   .next {
     width: 5rem;
-    height: 3rem;
+    font-size: 5rem;
     text-align: center;
     cursor: pointer;
   }
@@ -36,27 +37,38 @@ html {
   flex-wrap: wrap;
   width: 94rem;
   margin-bottom: 4rem;
+  justify-content: center;
 
   .product-card {
     display: grid;
-    width: 15.5rem;
+    width: 28rem;
     height: auto;
-    margin: 0 1.5rem auto;
+    margin: 1rem auto;
     text-align: center;
 
     .product-img {
-      width: 15.5rem;
-      height: 16rem;
+      width: 28rem;
+      height: 35rem;
       margin-bottom: 1rem;
+      border: 1px solid $color_black;
 
       img {
-        width: 15.5rem;
-        height: 16rem;
+        width: 28rem;
+        height: 35rem;
+        z-index: 10;
+      }
+      &:hover {
+        transform: scale($product-scale);
         cursor: pointer;
       }
     }
     .product-name {
       margin: 0;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
     }
     .product-price {
       margin: 0;
@@ -79,48 +91,48 @@ html {
       }
     }
   }
-}
 
-//배너
-.banner_detail {
-  display: flex;
-  flex-direction: column;
-  img {
-    width: 94rem;
-  }
-}
-
-//카테고리
-.category {
-  display: flex;
-  margin-top: 2rem;
-  div {
-    width: 10rem;
-    height: 2rem;
-    border: 1px solid black;
-    margin-right: 2rem;
-    border-radius: 15px;
-    text-align: center;
-    font-size: $size_normal;
-    cursor: pointer;
-  }
-}
-
-// 전체 주문 내역
-.order {
-  min-height: 24rem;
-
-  a {
+  //배너
+  .banner_detail {
     display: flex;
-    text-decoration: none;
-    font-size: $size_normal;
-    place-content: center;
-    div {
-      display: flex;
-      margin-right: 2rem;
+    flex-direction: column;
+    img {
+      width: 94rem;
     }
   }
-}
-footer {
-  border-top: 1px solid black;
+
+  //카테고리
+  .category {
+    display: flex;
+    margin-top: 2rem;
+    div {
+      width: 10rem;
+      height: 2rem;
+      border: 1px solid black;
+      margin-right: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      font-size: $size_normal;
+      cursor: pointer;
+    }
+  }
+
+  // 전체 주문 내역
+  .order {
+    min-height: 24rem;
+
+    a {
+      display: flex;
+      text-decoration: none;
+      font-size: $size_normal;
+      place-content: center;
+      div {
+        display: flex;
+        margin-right: 2rem;
+      }
+    }
+  }
+  footer {
+    border-top: 1px solid black;
+  }
 }

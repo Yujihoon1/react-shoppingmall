@@ -1,6 +1,12 @@
 div {
   display: block;
 }
+header {
+  position: fixed;
+  justify-self: center;
+  top: 0;
+  z-index: 1000;
+}
 .home {
   width: 94rem;
   background-color: #ecebe7;
@@ -17,6 +23,7 @@ nav {
   display: flex;
   width: 94rem;
   border-bottom: 1px solid;
+  background-color: white;
   .search {
   }
 }

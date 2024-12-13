@@ -8,6 +8,8 @@ import logo from "./logo.png";
 function Header() {
   const { isLoggedIn, user, setIsLoggedIn, setUser } = useContext(AuthContext);
   console.log("Header user:", user);
+  const [categories, setCategories] = useState([]);
+  const [showCategories, setShowCategories] = useState(false);
 
   useEffect(() => {
     console.log("Header user:", user); // user 값 확인
@@ -19,6 +21,17 @@ function Header() {
     localStorage.removeItem("user"); // localStorage에서 user 정보 제거
     localStorage.removeItem("token"); // localStorage에서 token 제거
   };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/category") // 카테고리 API 호출
+      .then((response) => {
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching category:", error);
+      });
+  }, []);
 
   // 토큰 사용
   // useEffect(() => {
@@ -54,8 +67,22 @@ function Header() {
           <li>
             <Link to="/">홈</Link>
           </li>
-          <li>
-            <Link to="/category">카테고리</Link>
+          <li
+            onMouseEnter={() => setShowCategories(true)}
+            onMouseLeave={() => setShowCategories(false)}
+          >
+            카테고리
+            {showCategories && (
+              <ul className="dropdown">
+                {categories.map((category) => (
+                  <li key={category.id}>
+                    <Link to={`/category/${category.id}`}>
+                      {category.category_name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
           <li>
             {isLoggedIn ? (

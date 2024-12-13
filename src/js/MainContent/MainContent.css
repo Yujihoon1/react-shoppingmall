@@ -7,7 +7,7 @@ html {
   justify-content: center;
   width: 94rem;
   height: 30rem;
-  margin: 4rem 0;
+  margin: 2rem 0;
   align-items: center;
 }
 .banner img {
@@ -17,13 +17,13 @@ html {
 }
 .banner .prev {
   width: 5rem;
-  height: 3rem;
+  font-size: 5rem;
   text-align: center;
   cursor: pointer;
 }
 .banner .next {
   width: 5rem;
-  height: 3rem;
+  font-size: 5rem;
   text-align: center;
   cursor: pointer;
 }
@@ -33,26 +33,36 @@ html {
   flex-wrap: wrap;
   width: 94rem;
   margin-bottom: 4rem;
+  justify-content: center;
 }
 .product-list .product-card {
   display: grid;
-  width: 15.5rem;
+  width: 28rem;
   height: auto;
-  margin: 0 1.5rem auto;
+  margin: 1rem auto;
   text-align: center;
 }
 .product-list .product-card .product-img {
-  width: 15.5rem;
-  height: 16rem;
+  width: 28rem;
+  height: 35rem;
   margin-bottom: 1rem;
+  border: 1px solid #000000;
 }
 .product-list .product-card .product-img img {
-  width: 15.5rem;
-  height: 16rem;
+  width: 28rem;
+  height: 35rem;
+  z-index: 10;
+}
+.product-list .product-card .product-img:hover {
+  transform: scale(1.05);
   cursor: pointer;
 }
 .product-list .product-card .product-name {
   margin: 0;
+}
+.product-list .product-card .product-name:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .product-list .product-card .product-price {
   margin: 0;
@@ -72,20 +82,18 @@ html {
 .product-list .product-card .product-form button {
   cursor: pointer;
 }
-
-.banner_detail {
+.product-list .banner_detail {
   display: flex;
   flex-direction: column;
 }
-.banner_detail img {
+.product-list .banner_detail img {
   width: 94rem;
 }
-
-.category {
+.product-list .category {
   display: flex;
   margin-top: 2rem;
 }
-.category div {
+.product-list .category div {
   width: 10rem;
   height: 2rem;
   border: 1px solid black;
@@ -95,22 +103,20 @@ html {
   font-size: 1.2rem;
   cursor: pointer;
 }
-
-.order {
+.product-list .order {
   min-height: 24rem;
 }
-.order a {
+.product-list .order a {
   display: flex;
   text-decoration: none;
   font-size: 1.2rem;
   place-content: center;
 }
-.order a div {
+.product-list .order a div {
   display: flex;
   margin-right: 2rem;
 }
-
-footer {
+.product-list footer {
   border-top: 1px solid black;
 }
 

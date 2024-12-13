@@ -35,6 +35,8 @@ const MainContent = () => {
         }));
         setProduct(productsWithNumberPrice);
         // console.log(productsWithNumberPrice);
+        console.log(response);
+        console.log(JSON.stringify(product, null, 2));
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -82,7 +84,7 @@ const MainContent = () => {
         {activePromotions.length > 0 && (
           <>
             <div className="prev" onClick={prevBanner}>
-              Prev
+              &lt;
             </div>
             <Link
               to={`/promotion/${activePromotions[currentBanner].promotion_id}`}
@@ -93,20 +95,23 @@ const MainContent = () => {
               />
             </Link>
             <div className="next" onClick={nextBanner}>
-              Next
+              &gt;
             </div>
           </>
         )}
       </div>
       <div className="product-list">
         {product.map((productItem) => (
-          <div key={productItem.num} className="product-card">
-            <React.Fragment key={productItem.num}>
+          <div key={productItem.product_num} className="product-card">
+            <React.Fragment key={productItem.product_num}>
               <ProductCard
                 product={productItem}
                 onProductDetail={handleProductDetail}
               />
-              <div className="product-form">
+              <div className="product-category">
+                {productItem.Category.category_name} {/* 카테고리 이름 표시 */}
+              </div>
+              {/* <div className="product-form">
                 <ProductForm
                   product={productItem}
                   onPurchase={handlePurchase}
@@ -114,7 +119,7 @@ const MainContent = () => {
                   quantity={quantity}
                   onQuantityChange={setQuantity}
                 />
-              </div>
+              </div> */}
             </React.Fragment>
           </div>
         ))}

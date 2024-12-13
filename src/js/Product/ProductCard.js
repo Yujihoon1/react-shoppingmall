@@ -23,9 +23,7 @@ function ProductCard({ product, onProductDetail }) {
       <h3 className="product-name" onClick={() => handleProductDetail(product)}>
         {product.product_name}
       </h3>
-      <p className="product-price" onClick={() => handleProductDetail(product)}>
-        가격: {product.product_price}원
-      </p>
+      <p className="product-price">{product.product_price}원</p>
     </div>
   );
 }

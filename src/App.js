@@ -12,7 +12,10 @@ function App() {
       <AuthProvider>
         <div className="container">
           <Header />
-          <AppRoutes />
+          <div className="header"></div>
+          <div className="body">
+            <AppRoutes />
+          </div>
           <Footer />
         </div>
       </AuthProvider>

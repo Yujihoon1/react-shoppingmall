@@ -3,14 +3,19 @@
   width: 13rem;
   border: 1px black solid;
 }
-.product-img img {
-  height: 10rem;
-  width: 10rem;
-  border: 1px black solid;
-}
 .container {
   display: grid;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+.header {
+  margin-bottom: 11rem;
+}
+.body {
+  width: 94rem;
+  min-height: 15rem;
+}
+footer {
+  border-top: 1px solid black;
 }
